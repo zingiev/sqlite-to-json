@@ -15,14 +15,15 @@ class DataBase():
                     SELECT * FROM {table_name}""")
 
                 rows = self.cursor.fetchall()
-                result = []
+                data = []
 
                 for row in rows:
                     row_dict = {}
                     for i, column_name in enumerate(self.cursor.description):
                         row_dict[column_name[0]] = row[i]
-                    result.append(row_dict)
+                    data.append(row_dict)
 
+                result = {table_name: data}
                 return result
             except sqlite3.OperationalError:
                 print(f'В вашей базе данных нет таблицы \"{table_name}\"')
