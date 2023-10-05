@@ -33,9 +33,9 @@ def main(db_file, table_name):
     db = DataBase(db_file)
     data = db.get_data(table_name)
 
-    base = json.dumps(data, indent=2, ensure_ascii=False)
+    data = json.dumps(data, indent=2, ensure_ascii=False)
     with open(f'{table_name}.json', 'w', encoding='utf-8') as f:
-        f.write(base)
+        f.write(data)
 
 
 if __name__ == "__main__":
